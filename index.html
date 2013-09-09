@@ -29,24 +29,25 @@
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-	    navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+	    navigator.accelerometer.getCurrentAcceleration(app.onSuccess, app.onError);
+    },
+	onSuccess: function() {
+        alert('Aceleración X: ' + acceleration.x + '\n' +
+              'Aceleración Y: ' + acceleration.y + '\n' +
+              'Aceleración Z: ' + acceleration.z + '\n' +
+              'Timestamp: '     + acceleration.timestamp + '\n');
+    },
+
+    // onError: Ocurrió un error
+    //
+    onError:function () {
+        alert('onError!');
     }
 };					  
 app.initialize();
 
  
-    function onSuccess() {
-        alert('Aceleración X: ' + acceleration.x + '\n' +
-              'Aceleración Y: ' + acceleration.y + '\n' +
-              'Aceleración Z: ' + acceleration.z + '\n' +
-              'Timestamp: '     + acceleration.timestamp + '\n');
-    }
-
-    // onError: Ocurrió un error
-    //
-    function onError() {
-        alert('onError!');
-    }
+    
 
     </script>
   </head>
