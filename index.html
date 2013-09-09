@@ -29,6 +29,7 @@
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+		navigator.notification.vibrate(500);
 	    navigator.accelerometer.getCurrentAcceleration(app.onSuccess, app.onError);
     },
 	onSuccess: function() {
@@ -53,6 +54,6 @@ app.initialize();
   </head>
   <body>
     <h1>Ejemplo</h1>
-    <p>getCurrentAcceleration</p>
+    <p>getCurrentAcceleration . 4</p>
   </body>
 </html>
