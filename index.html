@@ -5,19 +5,36 @@
 
     <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
     <script type="text/javascript" charset="utf-8">
-
-    // Espera a que Phonegap se inicie
+	
+	var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
     //
-    document.addEventListener("deviceready", onDeviceReady, false);
-
-    // PhoneGap esta listo
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
     //
-    function onDeviceReady() {
-        navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicity call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');		    	    
+    //
+    
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+	    navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
     }
+};					  
+app.initialize();
 
-    // onSuccess: Obtiene el resultado
-    //
+ 
     function onSuccess() {
         alert('Aceleración X: ' + acceleration.x + '\n' +
               'Aceleración Y: ' + acceleration.y + '\n' +
